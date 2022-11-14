@@ -22,8 +22,6 @@ public class SimpleGetRequest {
         //printing response body
         response.prettyPrint();
 
-
-
     }
 
 }

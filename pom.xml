@@ -31,12 +31,14 @@
 
     <dependencies>
 
+        <!--junit jupiter-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.9.0</version>
         </dependency>
 
+        <!--rest assured library-->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
