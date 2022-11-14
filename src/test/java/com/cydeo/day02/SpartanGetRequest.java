@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
+//example_1
 public class SpartanGetRequest {
 
     //normally it is not like this, just for today
