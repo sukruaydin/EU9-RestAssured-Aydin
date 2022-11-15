@@ -12,7 +12,7 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTEstWithPath extends SpartanTestBase {
+public class SpartanTestWithPath extends SpartanTestBase {
 
     /*
          Given accept type is json

@@ -54,12 +54,12 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
     public void test2(){
 
         Response response = given().log().all().accept(ContentType.JSON)
-                            .and().pathParam("id",500)
+                            .and().pathParam("id",50)
                             .when().get("/api/spartans/{id}");
 
 
         System.out.println(response.statusCode());
-        assertEquals(response.statusCode(),404);
+        assertEquals(response.statusCode(),200);
     }
 
     /*
