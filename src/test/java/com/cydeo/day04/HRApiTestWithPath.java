@@ -5,13 +5,12 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+//FIRST_JAVA_CLASS
 public class HRApiTestWithPath extends HRTestBase {
 
     @DisplayName("path method with queryParam")
@@ -56,6 +55,31 @@ public class HRApiTestWithPath extends HRTestBase {
         }
 
 
+    }
+
+    @DisplayName("path method, getting inside the json")
+    @Test
+    public void test2(){
+        Response response = given().queryParam("q","{\"job_id\": \"IT_PROG\"}")
+                .when().get("/employees");
+
+        assertEquals(200,response.statusCode());
+        assertEquals("application/json",response.contentType());
+
+        //make sure we have only IT_PROG as job_id
+        List<String> jobIdList = response.path("items.job_id");
+
+        for (String each : jobIdList) {
+            System.out.println(each);
+            assertEquals("IT_PROG",each);
+        }
+
+        //print each first_name of IT_PROGs
+        List<String> names = response.path("items.first_name");
+
+        for (String name : names) {
+            System.out.println(name);
+        }
     }
 
 }
