@@ -14,17 +14,13 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+//java.class_6
 public class Spartan_APIvsDB extends SpartanTestBase {
 
 
 
     @Test
     public void test1(){
-        //creating database connection
-        DBUtils.createConnection();
-
-
-
 
         /*
             task -->
@@ -33,6 +29,8 @@ public class Spartan_APIvsDB extends SpartanTestBase {
                     get same information from api
                     compare
          */
+
+        //connection already created in @BeforeAll method
 
         //getting data from DB
         String query = "SELECT SPARTAN_ID,NAME,GENDER,PHONE FROM SPARTANS WHERE SPARTAN_ID=15";
@@ -60,8 +58,8 @@ public class Spartan_APIvsDB extends SpartanTestBase {
         assertThat(spartanAPI_Map.get("phone").toString(),is(spartanDB_Map.get("PHONE").toString()));
 
 
-        //closing connection
-        DBUtils.destroy();
+        ////connection already closed in @AfterAll method
+
     }
 
 }
