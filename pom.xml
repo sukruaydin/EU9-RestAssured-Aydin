@@ -54,17 +54,18 @@
             <version>2.12.4</version>
         </dependency>
 
-
-
-
-
-
-
+        <!-- oracle driver -->
         <dependency>
-            <groupId>com.oracle.ojdbc</groupId>
+            <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc8</artifactId>
-            <version>19.3.0.0</version>
+            <version>21.7.0.0</version>
         </dependency>
+
+
+
+
+
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>

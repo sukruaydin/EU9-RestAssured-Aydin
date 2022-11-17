@@ -1,10 +1,7 @@
 package com.cydeo.utilities;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DBUtils {
 
@@ -137,7 +134,7 @@ public class DBUtils {
         try {
             rsmd = resultSet.getMetaData();
             while (resultSet.next()) {
-                Map<String, Object> colNameValueMap = new HashMap<>();
+                Map<String, Object> colNameValueMap = new LinkedHashMap<>();
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                     colNameValueMap.put(rsmd.getColumnName(i), resultSet.getObject(i));
                 }
