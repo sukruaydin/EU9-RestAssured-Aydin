@@ -1,5 +1,7 @@
 package com.cydeo.day05;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +20,7 @@ public class HamcrestMatchersIntro {
 
         //we have hamcrest dependency already in rest-assured dependency
         //asserting 5+5=10
-        assertThat(5+5, is(10)); //is
+        MatcherAssert.assertThat(5+5, is(10)); //is
         assertThat(5+5, equalTo(10)); //equal to
 
         //matchers has 2 overloaded version
