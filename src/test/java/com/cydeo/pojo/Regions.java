@@ -1,19 +1,32 @@
 package com.cydeo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
 
-@Getter
+@Getter //comes from lombok
 @Setter
 @ToString
 public class Regions {
 
-    private int region_id;
+    //this JsonProperty allows us to link 2 variable names
+    //first variable name stands for the name coming from API
+    //second variable name stands for the name that i create
+    //so, i can name my variable freely
+    //this annotation comes from jackson
+    //useful to use when we have spaces in variable names
+    @JsonProperty("region_id")
+    private int regionId;
+
+    @JsonProperty("region_name")
     private String region_name;
+
+    @JsonProperty("links")
     private List<Links> links;
+
 
     /*public int getRegion_id() {
         return region_id;
