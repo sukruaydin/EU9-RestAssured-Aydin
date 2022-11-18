@@ -61,17 +61,18 @@
             <version>21.7.0.0</version>
         </dependency>
 
-
-
-
-
-
-
+        <!-- it creates getter setters automatically -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
         </dependency>
+
+
+
+
+
+
 
         <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
         <dependency>

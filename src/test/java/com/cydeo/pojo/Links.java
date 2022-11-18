@@ -1,11 +1,18 @@
 package com.cydeo.pojo;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class Links {
 
     private String rel;
     private String href;
 
-    public String getRel() {
+    /*public String getRel() {
         return rel;
     }
     public void setRel(String rel) {
@@ -24,5 +31,5 @@ public class Links {
                 "rel='" + rel + '\'' +
                 ", href='" + href + '\'' +
                 '}';
-    }
+    }*/
 }

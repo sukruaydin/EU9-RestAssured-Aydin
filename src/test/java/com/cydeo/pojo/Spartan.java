@@ -1,5 +1,12 @@
 package com.cydeo.pojo;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class Spartan {
 
     //fields for a spartan
@@ -8,7 +15,7 @@ public class Spartan {
     private String gender;
     private long phone;
 
-    //getters & setters
+/*    //getters & setters
     public int getId() {
         return id;
     }
@@ -43,7 +50,7 @@ public class Spartan {
                 ", gender='" + gender + '\'' +
                 ", phone=" + phone +
                 '}';
-    }
+    }*/
 
 
 }

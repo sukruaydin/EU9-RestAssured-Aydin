@@ -1,13 +1,20 @@
 package com.cydeo.pojo;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
 public class Search {
 
     private List<Spartan> content;
     private int totalElement;
 
-    public List<Spartan> getContent() {
+    /*public List<Spartan> getContent() {
         return content;
     }
     public void setContent(List<Spartan> content) {
@@ -26,5 +33,5 @@ public class Search {
                 "content=" + content +
                 ", totalElement=" + totalElement +
                 '}';
-    }
+    }*/
 }
