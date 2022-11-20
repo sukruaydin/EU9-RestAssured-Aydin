@@ -28,7 +28,7 @@ public class SpartanNegativeGetRequest {
         Response response = given().accept(ContentType.XML)
                 .when().get("/api/spartans/10");
 
-        System.out.println("response.statusCode() = " + response.statusCode());
+        //System.out.println("response.statusCode() = " + response.statusCode());
 
     }
 }

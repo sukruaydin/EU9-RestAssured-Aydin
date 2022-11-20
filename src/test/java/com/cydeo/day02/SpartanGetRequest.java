@@ -15,17 +15,16 @@ public class SpartanGetRequest {
     //normally it is not like this, just for today
     String baseUrl = "http://54.82.123.95:8000";
 
-    /*
+    @DisplayName("Adding Header by accept method")
+    @Test
+    public void test1(){
+         /*
         Given Accept type application/json
         When user send GET request to /api/spartans end point
         Then status code must be 200
         Then response Content Type must be application/json
         And response body should be json format
     */
-
-    @DisplayName("Adding Header by accept method")
-    @Test
-    public void test1(){
 
         Response response = RestAssured.given().accept(ContentType.JSON)
                 .when().get(baseUrl + "/api/spartans");
@@ -47,17 +46,16 @@ public class SpartanGetRequest {
 
     }
 
-    /*
+    @DisplayName("Getting one spartan by path")
+    @Test
+    public void test2(){
+        /*
         Given accept is application/json
         When users send a get request to /api/spartans/3
         Then status code should be 200
         And content type should be application/json
         and json body should contain Fidole
      */
-
-    @DisplayName("Getting one spartan by path")
-    @Test
-    public void test2(){
         Response response = RestAssured.given().accept(ContentType.JSON)
                 .when().get(baseUrl+"/api/spartans/3");
 
@@ -66,7 +64,10 @@ public class SpartanGetRequest {
         Assertions.assertTrue(response.body().asString().contains("Fidole"));
     }
 
-    /*
+    @DisplayName("header(), headers() methods")
+    @Test
+    public void test3(){
+        /*
         Given no headers provided
         When users send a get request to /api/hello
         Then response status code should be 200
@@ -75,10 +76,6 @@ public class SpartanGetRequest {
         And content-length should be 17
         And body should be "Hello from Sparta"
      */
-
-    @DisplayName("header(), headers() methods")
-    @Test
-    public void test3(){
         Response response = RestAssured.when().get(baseUrl+"/api/hello");
 
         Assertions.assertEquals(response.statusCode(),200);
