@@ -14,7 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class HRApiTestsWithParameters extends HRTestBase {
 
-    /*
+    @DisplayName("exp_1")
+    @Test
+    public void test1(){
+        /*
         Given accept type is Json
         And parameters: q = {"region_id":2}
         When users sends a GET request to "/countries"
@@ -22,10 +25,6 @@ public class HRApiTestsWithParameters extends HRTestBase {
         And Content type is application/json
         And Payload should contain "United States of America"
      */
-
-    @DisplayName("exp_1")
-    @Test
-    public void test1(){
         Response response = given().accept(ContentType.JSON)
                 .and().queryParam("q","{\"region_id\":2}")
                 .when().get("/countries");
@@ -36,12 +35,12 @@ public class HRApiTestsWithParameters extends HRTestBase {
 
     }
 
-    /*
-        Send a GET request to employees and get only employees who work as an IT_PROG
-    */
     @DisplayName("exp_2")
     @Test
     public void test2(){
+        /*
+        Send a GET request to employees and get only employees who work as an IT_PROG
+    */
         Response response = given().queryParam("q","{\"job_id\": \"IT_PROG\"}")
                 .when().get("/employees");
 

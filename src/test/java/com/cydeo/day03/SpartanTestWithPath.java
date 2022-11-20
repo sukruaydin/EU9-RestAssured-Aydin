@@ -14,7 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SpartanTestWithPath extends SpartanTestBase {
 
-    /*
+    @DisplayName("getting into json body by .path method")
+    @Test
+    public void test1(){
+        /*
          Given accept type is json
          And path param id is 10
          When user sends a get request to "api/spartans/{id}"
@@ -26,10 +29,6 @@ public class SpartanTestWithPath extends SpartanTestBase {
               gender is "Female",
               phone is 3312820936
    */
-
-    @DisplayName("getting into json body by .path method")
-    @Test
-    public void test1(){
 
         Response response = given().accept(ContentType.JSON)
                 .and().pathParam("id",10)

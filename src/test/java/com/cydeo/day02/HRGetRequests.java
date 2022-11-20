@@ -27,6 +27,10 @@ public class HRGetRequests {
         assertEquals(response.statusCode(),200);
     }
 
+    @DisplayName("get request for regions/2")
+    @Test
+    public void test2(){
+
     /*
         Given accept type is application/json
         When user sends get request for regions/2
@@ -34,9 +38,6 @@ public class HRGetRequests {
         And response content-type is in application/json
         And response body contains Americas
      */
-    @DisplayName("get request for regions/2")
-    @Test
-    public void test2(){
 
         //static import implemented
 
@@ -45,9 +46,11 @@ public class HRGetRequests {
 
         assertEquals(response.statusCode(),200);
         assertEquals(response.contentType(),"application/json");
+        System.out.println(response.contentType());
         assertTrue(response.body().asString().contains("Americas"));
 
         response.prettyPrint();
+
     }
 
 }

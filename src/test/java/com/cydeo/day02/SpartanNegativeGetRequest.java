@@ -16,15 +16,15 @@ public class SpartanNegativeGetRequest {
         baseURI = "http://54.82.123.95:8000";
     }
 
-
+    @Test
+    public void test1(){
     /*
         Given Accept type application/xml
         When user send get request to /api/spartans end point
         Then status code must be 406
         And response content-type must be application/xml;charset=UTF-8
      */
-    @Test
-    public void test1(){
+
         Response response = given().accept(ContentType.XML)
                 .when().get("/api/spartans/10");
 

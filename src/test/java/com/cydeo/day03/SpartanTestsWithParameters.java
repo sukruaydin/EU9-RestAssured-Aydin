@@ -17,7 +17,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SpartanTestsWithParameters extends SpartanTestBase {
 
-    /*
+    @DisplayName("GET request to /api/spartans/{id} with 5")
+    @Test
+    public void test1() {
+        /*
           Given accept type is json
           When id parameter value is 5
           When user sends GET request to /api/spartans/{id}
@@ -25,9 +28,6 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
           And response content-type: application/json
           And "Blythe" should be in response payload(body)
      */
-    @DisplayName("GET request to /api/spartans/{id} with 5")
-    @Test
-    public void test1() {
 
         Response response = given().accept(ContentType.JSON)
                 .when().pathParam("id", 5)
@@ -39,7 +39,10 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
 
     }
 
-     /*
+    @DisplayName("ff")
+    @Test
+    public void test2(){
+        /*
         TASK
         Given accept type is json
         And id parameter value is 500
@@ -48,10 +51,6 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
         And response content-type: application/json
         And "Not Found" message should be in response payload
      */
-
-    @DisplayName("ff")
-    @Test
-    public void test2(){
 
         Response response = given().log().all().accept(ContentType.JSON)
                             .and().pathParam("id",50)
@@ -62,7 +61,10 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
         assertEquals(response.statusCode(),200);
     }
 
-    /*
+    @DisplayName("Query Param, log().all()")
+    @Test
+    public void test3(){
+        /*
         Given accept type is Json
         And query parameter values are:
         gender|Female
@@ -73,10 +75,6 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
         And "Female" should be in response payload
         And "Janette" should be in response payload
      */
-
-    @DisplayName("Query Param, log().all()")
-    @Test
-    public void test3(){
 
         Response response = given().log().all().accept(ContentType.JSON)
                 .and().queryParam("gender","Female")
@@ -90,7 +88,11 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
 
     }
 
-    /*
+
+    @DisplayName("Query Params with Map")
+    @Test
+    public void test4(){
+        /*
         Given accept type is Json
         And query parameter values are:
         gender|Female
@@ -102,9 +104,6 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
         And "Janette" should be in response payload
      */
 
-    @DisplayName("Query Params with Map")
-    @Test
-    public void test4(){
         //create a map and add query parameters
         Map<String,Object> queryMap = new LinkedHashMap<>();
         queryMap.put("nameContains","e");
