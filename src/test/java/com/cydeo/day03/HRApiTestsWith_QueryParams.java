@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 
-public class HRApiTestsWithParameters extends HRTestBase {
+public class HRApiTestsWith_QueryParams extends HRTestBase {
 
-    @DisplayName("exp_1")
+    @DisplayName("queryParam(key,value) method - 1")
     @Test
     public void test1(){
         /*
@@ -35,7 +35,7 @@ public class HRApiTestsWithParameters extends HRTestBase {
 
     }
 
-    @DisplayName("exp_2")
+    @DisplayName("queryParam(key,value) method - 2")
     @Test
     public void test2(){
         /*

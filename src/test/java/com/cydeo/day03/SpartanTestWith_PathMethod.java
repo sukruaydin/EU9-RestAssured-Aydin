@@ -12,7 +12,7 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTestWithPath extends SpartanTestBase {
+public class SpartanTestWith_PathMethod extends SpartanTestBase {
 
     @DisplayName("getting into json body by .path method")
     @Test

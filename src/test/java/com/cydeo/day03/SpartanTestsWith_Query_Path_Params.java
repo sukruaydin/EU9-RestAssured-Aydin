@@ -15,9 +15,9 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanTestsWithParameters extends SpartanTestBase {
+public class SpartanTestsWith_Query_Path_Params extends SpartanTestBase {
 
-    @DisplayName("GET request to /api/spartans/{id} with 5")
+    @DisplayName("pathParam(key,value) method - 1")
     @Test
     public void test1() {
         /*
@@ -39,13 +39,13 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
 
     }
 
-    @DisplayName("ff")
+    @DisplayName("pathParam(key,value) method - 2")
     @Test
     public void test2(){
         /*
         TASK
         Given accept type is json
-        And id parameter value is 500
+        And id parameter value is 50
         When user sends GET request to /api/spartans/{id}
         Then response status code should be 404
         And response content-type: application/json
@@ -61,7 +61,7 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
         assertEquals(response.statusCode(),200);
     }
 
-    @DisplayName("Query Param, log().all()")
+    @DisplayName("queryParam(), log().all()")
     @Test
     public void test3(){
         /*
@@ -89,7 +89,7 @@ public class SpartanTestsWithParameters extends SpartanTestBase {
     }
 
 
-    @DisplayName("Query Params with Map")
+    @DisplayName("queryParams(map) method")
     @Test
     public void test4(){
         /*
