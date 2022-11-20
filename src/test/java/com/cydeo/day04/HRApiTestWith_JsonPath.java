@@ -12,11 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-public class HRApiTestWithJsonPath extends HRTestBase {
+public class HRApiTestWith_JsonPath extends HRTestBase {
 
-    @DisplayName("jasonPath examples")
+    @DisplayName("findAll method - 1 with jsonPath")
     @Test
     public void test1(){
 
@@ -61,13 +60,15 @@ public class HRApiTestWithJsonPath extends HRTestBase {
 
     }
 
-    @DisplayName("GET request to /employees with query param")
+    @DisplayName("findAll, max methods - 2 with jsonPath")
     @Test
     public void test2(){
 
         Response response = given().accept(ContentType.JSON)
                 .and().queryParam("limit",107)
                 .when().get("/employees");
+
+        //in this situation, i still have everything as response, and i am asked to do filtering
 
         //get me all email of employees who is working as IT_PROG
         JsonPath jsonPath = response.jsonPath();

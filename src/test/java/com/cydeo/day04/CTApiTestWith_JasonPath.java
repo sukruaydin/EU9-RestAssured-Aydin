@@ -10,12 +10,15 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CTApiTestWithJasonPath extends CydeoTrainingTestBase {
+public class CTApiTestWith_JasonPath extends CydeoTrainingTestBase {
 
-
-            /*
-            send a get request to student id 23401 as a path parameter and accept header application/json
-            verify status code=200 /content type=application/json;charset=UTF-8 /Content-Encoding = gzip
+    @DisplayName("response.jsonPath(), advanced example")
+    @Test
+    public void test1(){
+         /*
+            send a get request to student id 23 as a path parameter and accept header application/json
+            verify status code=200
+                   content type=application/json;charset=UTF-8
             verify Date header exists
             assert that
                     firstName Derick
@@ -28,9 +31,6 @@ public class CTApiTestWithJasonPath extends CydeoTrainingTestBase {
 
                     using JsonPath
              */
-    @DisplayName("qwert")
-    @Test
-    public void test1(){
 
         Response response = given().accept(ContentType.JSON)
                 .and().pathParam("id",23)
@@ -39,6 +39,7 @@ public class CTApiTestWithJasonPath extends CydeoTrainingTestBase {
         assertEquals(200,response.statusCode());
         assertEquals("application/json;charset=UTF-8",response.contentType());
 
+        //asserting date exists
         boolean isDateExist = response.headers().hasHeaderWithName("date");
         assertTrue(isDateExist);
 

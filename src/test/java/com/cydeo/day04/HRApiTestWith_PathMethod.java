@@ -11,15 +11,15 @@ import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 //FIRST_JAVA_CLASS
-public class HRApiTestWithPath extends HRTestBase {
+public class HRApiTestWith_PathMethod extends HRTestBase {
 
-    @DisplayName("path method with queryParam")
+    @DisplayName("response.path() method - 1")
     @Test
     public void test1(){
 
         Response response = given().accept(ContentType.JSON)
                 .and().queryParam("q","{\"region_id\": 2}")
-                .when().get("/countries");
+                .when().get("/countries"); //returns 5 json objects
 
         assertEquals(200,response.statusCode());
 
@@ -57,7 +57,7 @@ public class HRApiTestWithPath extends HRTestBase {
 
     }
 
-    @DisplayName("path method, getting inside the json")
+    @DisplayName("response.path() method - 2")
     @Test
     public void test2(){
         Response response = given().queryParam("q","{\"job_id\": \"IT_PROG\"}")

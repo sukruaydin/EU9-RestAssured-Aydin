@@ -10,9 +10,12 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanWithJasonPath extends SpartanTestBase {
+public class SpartanWith_JasonPath extends SpartanTestBase {
 
-     /*
+    @DisplayName("response.jsonPath() method")
+    @Test
+    public void test1(){
+         /*
         Given accept type is json
         And path param id is 10
         When user sends a get request to "api/spartans/{id}"
@@ -24,10 +27,6 @@ public class SpartanWithJasonPath extends SpartanTestBase {
              gender is "Female",
              phone is 3312820936
       */
-
-    @DisplayName("jason-path")
-    @Test
-    public void test1(){
 
         Response response = given().accept(ContentType.JSON)
                 .and().pathParam("id",10)
@@ -45,8 +44,14 @@ public class SpartanWithJasonPath extends SpartanTestBase {
 
         int id = jsonPath.getInt("id");
         String name1 = jsonPath.getString("name");
-        String gender = jsonPath.get("gender");
-        long phone = jsonPath.get("phone");
+        String gender = jsonPath.getString("gender");
+        long phone = jsonPath.getLong("phone");
+
+        //asserting
+        assertEquals(10,id);
+        assertEquals(name1,"Lorenza");
+        assertEquals(gender,"Female");
+        assertEquals(phone,3312820936l);
 
         //printing all of them
         System.out.println("id = " + id);
@@ -54,11 +59,6 @@ public class SpartanWithJasonPath extends SpartanTestBase {
         System.out.println("gender = " + gender);
         System.out.println("phone = " + phone);
 
-        //asserting
-        assertEquals(10,id);
-        assertEquals(name1,"Lorenza");
-        assertEquals(gender,"Female");
-        assertEquals(phone,3312820936l);
 
     }
 

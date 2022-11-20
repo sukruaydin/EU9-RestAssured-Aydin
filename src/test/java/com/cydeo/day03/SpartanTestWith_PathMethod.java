@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SpartanTestWith_PathMethod extends SpartanTestBase {
 
-    @DisplayName("getting into json body by .path method")
+    @DisplayName("response.path(String key) method - 1")
     @Test
     public void test1(){
         /*
@@ -42,30 +42,34 @@ public class SpartanTestWith_PathMethod extends SpartanTestBase {
         String gender = response.path("gender");
         long phone = response.path("phone");
 
-        System.out.println("id = " + id);
-        System.out.println("name = " + name);
-        System.out.println("gender = " + gender);
-        System.out.println("phone = " + phone);
-
         assertEquals(id,10);
         assertEquals(name,"Lorenza");
         assertEquals(gender,"Female");
         assertEquals(phone,3312820936l);
 
+        System.out.println("id = " + id);
+        System.out.println("name = " + name);
+        System.out.println("gender = " + gender);
+        System.out.println("phone = " + phone);
+
     }
 
+    @DisplayName("response.path(String key) method - 2, indexing")
     @Test
     public void test2(){
 
         Response response = given().accept(ContentType.JSON)
                 .when().get("/api/spartans");
 
+        //returns first id
         int id0 = response.path("id[0]");
         System.out.println("id0 = " + id0);
 
+        //returns first name
         String name0 = response.path("name[0]");
         System.out.println("name0 = " + name0);
 
+        //returns last name
         String nameLast = response.path("name[-1]");
         System.out.println("nameLast = " + nameLast);
 
