@@ -18,16 +18,17 @@ import static org.hamcrest.Matchers.*;
 //java.class_3
 public class HRApiHamcrestTest extends HRTestBase {
 
-    @DisplayName("GET request to Employees IT_PROG endpoint and chaining")
+    @DisplayName("hamcrest, everyItem(), containsInAnyOrder(), containsInRelativeOrder()")
     @Test
     public void test1(){
-         /*  send a get request to employees endpoint with query parameter job_id IT_PROG
-        verify statusCode
-        verify each job_id is IT_PROG
-        verify first names are --> "Alexander","Bruce","David","Valli","Diana"
-        verify emails without in order -->
-        expected names
-    */
+         /*
+            send a get request to employees endpoint with query parameter job_id IT_PROG
+            verify statusCode
+            verify each job_id is IT_PROG
+            verify first names are --> "Alexander","Bruce","David","Valli","Diana"
+            verify emails without in order -->
+            expected names
+        */
 
         //will use later in the down
         List<String> names = Arrays.asList("Alexander","Bruce","David","Valli","Diana");
@@ -83,7 +84,7 @@ public class HRApiHamcrestTest extends HRTestBase {
 
         //asserting with assertThat and jsonPath
 
-        //asset that we have 5 first_names
+        //assert that we have 5 first_names
         assertThat(jsonPath.get("items.first_name"),hasSize(5));
 
         //asset first_names order

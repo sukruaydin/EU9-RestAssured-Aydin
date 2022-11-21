@@ -27,7 +27,7 @@ public class SpartanApi_JSONtoJAVATest extends SpartanTestBase {
         //get the json and convert it to map
         //deserialization..?? bla bla
         //using jackson dependency now
-        Map<String,Object> jsonMap = response.body().as(Map.class);
+        Map<String,Object> jsonMap = response.as(Map.class);
         System.out.println("jsonMap = " + jsonMap);
 
         //after we got the map, we can use hamcrest or junit assertions to do assertion
@@ -45,12 +45,13 @@ public class SpartanApi_JSONtoJAVATest extends SpartanTestBase {
                 .extract().response();
 
         //converting json to java collection
-        List<Map<String,Object>> jsonList = response.body().as(List.class);
+        List<Map<String,Object>> jsonList = response.as(List.class);
 
         //printing second object's name
         String nameOfSecondObject = jsonList.get(1).get("name").toString();
         System.out.println("nameOfSecondObject = " + nameOfSecondObject);
 
+        //printing 3rd spartan
         Map<String,Object> spartan3 = jsonList.get(2);
         System.out.println("spartan3 = " + spartan3);
 

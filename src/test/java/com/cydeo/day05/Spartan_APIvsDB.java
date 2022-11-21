@@ -17,8 +17,6 @@ import static org.hamcrest.Matchers.*;
 //java.class_6
 public class Spartan_APIvsDB extends SpartanTestBase {
 
-
-
     @Test
     public void test1(){
 
