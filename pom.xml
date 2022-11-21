@@ -14,6 +14,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+            <systemPropertyVariables>
+                <user.language>eng</user.language>
+                <user.region>ENG</user.region>
+            </systemPropertyVariables>
+        </configuration>
+    </plugin>
+
     <!--makes sure we are always building with java 11-->
     <build>
         <plugins>

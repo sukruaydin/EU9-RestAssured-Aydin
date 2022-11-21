@@ -18,17 +18,16 @@ import static org.hamcrest.Matchers.*;
 //java.class_3
 public class HRApiHamcrestTest extends HRTestBase {
 
-    /*  send a get request to employees endpoint with query parameter job_id IT_PROG
+    @DisplayName("GET request to Employees IT_PROG endpoint and chaining")
+    @Test
+    public void test1(){
+         /*  send a get request to employees endpoint with query parameter job_id IT_PROG
         verify statusCode
         verify each job_id is IT_PROG
         verify first names are --> "Alexander","Bruce","David","Valli","Diana"
         verify emails without in order -->
         expected names
     */
-
-    @DisplayName("GET request to Employees IT_PROG endpoint and chaining")
-    @Test
-    public void test1(){
 
         //will use later in the down
         List<String> names = Arrays.asList("Alexander","Bruce","David","Valli","Diana");

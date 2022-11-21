@@ -25,10 +25,17 @@ public class SpartanNegativeGetRequest {
         And response content-type must be application/xml;charset=UTF-8
      */
 
-        Response response = given().accept(ContentType.XML)
-                .when().get("/api/spartans/10");
+        /*Response response = given().accept(ContentType.XML)
+                .when().get("/api/spartans");*/
+
+        //assertEquals(response.statusCode(),406);
 
         //System.out.println("response.statusCode() = " + response.statusCode());
+
+        Response response = given().accept("application/xml")
+                .when().get("api/spartans/10");
+        assertEquals(406, response.statusCode());
+        assertEquals("application/xml;charset=UTF-8",response.contentType());
 
     }
 }

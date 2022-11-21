@@ -2,6 +2,7 @@ package com.cydeo.day05;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,10 @@ import static org.hamcrest.Matchers.*;
 //java.class_2
 public class HamcrestMatchersApiTest {
 
-    /*
+    @DisplayName("hamcrest example with Spartan API")
+    @Test
+    public void test1(){
+        /*
        given accept type is Json
        And path param id is 15
        When user sends a get request to spartans/{id}
@@ -25,20 +29,17 @@ public class HamcrestMatchersApiTest {
            "phone": 1938695106
         */
 
-    @DisplayName("Spartan API hamcrest example")
-    @Test
-    public void test1(){
-
         given().accept(ContentType.JSON)
                 .and().pathParam("id",15)
                 .when().get("http://54.82.123.95:8000/api/spartans/{id}")
                 .then().statusCode(200)
                 .and().contentType("application/json")
-                .and().body("id", equalTo(15),"name",is("Meta"),"gender",is("Female"),"phone",equalTo(1938695106));
+                .and().body("id", equalTo(15),"name",
+                        is("Meta"),"gender",is("Female"),"phone",equalTo(1938695106));
 
     }
 
-    @DisplayName("CydeoTraining API hamcrest example-1")
+    @DisplayName("hamcrest example with Cydeo Training API")
     @Test
     public void test2(){
 
@@ -55,7 +56,7 @@ public class HamcrestMatchersApiTest {
 
     }
 
-    @DisplayName("CydeoTraining API hamcrest example-2, hasItems()")
+    @DisplayName("hamcrest example - 2 with Cydeo Training API, hasItems() method")
     @Test
     public void test3(){
 
@@ -66,6 +67,8 @@ public class HamcrestMatchersApiTest {
                 .when().get("https://api.training.cydeo.com/teacher/all")
 
                 .then().statusCode(200)
+
+                //"teachers.firstName" --> already returning a list
                 .body("teachers.firstName",hasItems("Ron","Erik","Yet"));
 
     }

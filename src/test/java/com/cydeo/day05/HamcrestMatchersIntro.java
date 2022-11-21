@@ -20,13 +20,13 @@ public class HamcrestMatchersIntro {
 
         //we have hamcrest dependency already in rest-assured dependency
         //asserting 5+5=10
-        MatcherAssert.assertThat(5+5, is(10)); //is
+        MatcherAssert.assertThat(5+5, Matchers.is(10)); //is
         assertThat(5+5, equalTo(10)); //equal to
 
         //matchers has 2 overloaded version
         //first accepts actual value
         //second accepts another matchers
-        //below examples is method is accepting another matchers equal to make it readable
+        //below examples is method is accepting another matchers (equal to) make it readable
         assertThat(5+5, is(equalTo(10))); //chaining
 
         //chaining example
@@ -48,7 +48,6 @@ public class HamcrestMatchersIntro {
         //checking for equality as same as numbers
         assertThat(text,is(equalTo("EU9 is learning Hamcrest")));
         assertThat(text,equalTo("EU9 is learning Hamcrest"));
-        assertThat(text,is(equalTo("EU9 is learning Hamcrest")));
 
         //check if this text starts with EU9
         assertThat(text,startsWith("EU9"));
