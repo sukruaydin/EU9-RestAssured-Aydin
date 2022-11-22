@@ -46,7 +46,7 @@ public class Spartan_APIvsDB extends SpartanTestBase {
                             .extract().response();
 
         //deserialization
-        Map<String,Object> spartanAPI_Map = response.body().as(Map.class);
+        Map<String,Object> spartanAPI_Map = response.as(Map.class);
         System.out.println("spartanAPI_Map = " + spartanAPI_Map);
 
         //hamcrest assertion
@@ -56,7 +56,7 @@ public class Spartan_APIvsDB extends SpartanTestBase {
         assertThat(spartanAPI_Map.get("phone").toString(),is(spartanDB_Map.get("PHONE").toString()));
 
 
-        ////connection already closed in @AfterAll method
+        //connection already closed in @AfterAll method
 
     }
 
