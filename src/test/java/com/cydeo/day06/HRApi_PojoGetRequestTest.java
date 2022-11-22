@@ -8,6 +8,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.IndicativeSentencesGeneration;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import static org.hamcrest.Matchers.*;
 
 public class HRApi_PojoGetRequestTest extends HRTestBase {
 
+    @DisplayName("returning 1 region, with jsonPath.getObject()")
     @Test
     public void test1(){
 
@@ -28,14 +30,14 @@ public class HRApi_PojoGetRequestTest extends HRTestBase {
                 .then().statusCode(200)
                 .extract().jsonPath();
 
-        Regions region1 = jsonPath.getObject("items[0]", Regions.class);
+        Region region1 = jsonPath.getObject("items[0]", Region.class);
         System.out.println("region1 = " + region1);
         System.out.println("region1.getRegion_id() = " + region1.getRegionId());
         System.out.println("region1.getLinks().get(0) = " + region1.getLinks().get(0));
 
     }
 
-    @DisplayName("returning only certain values")
+    @DisplayName("@JsonIgnoreProperties annotation used, returning certain values")
     @Test
     public void test2(){
 
@@ -48,6 +50,7 @@ public class HRApi_PojoGetRequestTest extends HRTestBase {
 
     }
 
+    @DisplayName("@JsonIgnoreProperties annotation used, returning certain values")
     @Test
     public void test3(){
         /*  send a get request to regions
@@ -60,9 +63,9 @@ public class HRApi_PojoGetRequestTest extends HRTestBase {
 
         //as method is enough
 
-        Region object = get("/regions")
+        Regions object = get("/regions")
                 .then().statusCode(200)
-                .extract().response().as(Region.class);
+                .extract().response().as(Regions.class);
 
         //asserting count
         assertThat(object.getCount(), is(4));
@@ -71,7 +74,7 @@ public class HRApi_PojoGetRequestTest extends HRTestBase {
         List<String> regionNames = new ArrayList<>();
 
         //each item is a list of Regions
-        for (Regions item : object.getItems()) {
+        for (Region item : object.getItems()) {
             regionIds.add(item.getRegionId());
             regionNames.add(item.getRegion_name());
         }
@@ -82,6 +85,33 @@ public class HRApi_PojoGetRequestTest extends HRTestBase {
         assertThat(regionIds,is(expectedRegionIds));
         assertThat(regionNames,is(expectedRegionNames));
 
+
+    }
+
+    @DisplayName("shortest way of test3")
+    @Test
+    public void test4(){
+        /*  send a get request to regions
+        verify that region ids are 1,2,3,4
+        verify that regions names Europe ,Americas , Asia, Middle East and Africa
+        verify that count is 4
+        try to use pojo as much as possible
+        ignore non-used fields
+     */
+
+        JsonPath jsonPath = given().accept(ContentType.JSON)
+                .get("/regions")
+                .then().statusCode(200)
+                .extract().jsonPath();
+
+        List<Integer> listOfRegionId = jsonPath.getList("items.region_id");
+        List<String> listOfRegionName = jsonPath.getList("items.region_name");
+
+        System.out.println("listOfRegionId = " + listOfRegionId);
+        System.out.println("listOfRegionName = " + listOfRegionName);
+
+        assertThat(listOfRegionId, containsInRelativeOrder(1,2,3,4));
+        assertThat(listOfRegionName, containsInRelativeOrder("Europe", "Americas", "Asia", "Middle East and Africa"));
 
     }
 
