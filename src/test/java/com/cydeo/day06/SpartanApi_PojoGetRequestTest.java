@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.*;
 
 public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
 
-    @DisplayName("aa")
+    @DisplayName("2 ways for deserialization, as(), jsonPath.getObject()")
     @Test
     public void test1(){
 
@@ -28,7 +28,7 @@ public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
                 .extract().response();
 
         //deserialize --> json to pojo (plain old java object)
-        //we have 2 ways of serialization json to java.class
+        //we have 2 ways of deserialization json to java.class
 
         //1st-way
         //we convert json response to Spartan object with the help of jackson dependency
@@ -56,6 +56,7 @@ public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
 
     }
 
+    @DisplayName("2nd way --> powerful jsonPath due to accepting path")
     @Test
     public void test2(){
         // spartans/search?nameContains=a&gender=Male
@@ -68,7 +69,7 @@ public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
                 .then().statusCode(200)
                 .extract().jsonPath();
 
-        //json path is much powerful, we can give path
+        //jsonPath is much powerful, we can give path
 
         //get the first spartan from content list and put inside spartan object
         Spartan s1 = jsonPath.getObject("content[0]", Spartan.class);
@@ -78,6 +79,7 @@ public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
 
     }
 
+    @DisplayName("1st way --> as()")
     @Test
     public void test3(){
 
@@ -102,19 +104,30 @@ public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
 
     }
 
-    @DisplayName("different approach?")
+    @DisplayName("hollllly shit --> jsonPath().getList(\"content\", Spartan.class)")
     @Test
     public void test4(){
 
-        List<Spartan> spartans = given().accept(ContentType.JSON)
+        /*List<Spartan> spartans = given().accept(ContentType.JSON)
                 .and().queryParam("nameContains", "a")
                 .and().queryParam("gender", "Male")
                 .when().get("/api/spartans/search")
                 .then().statusCode(200)
                 .extract().jsonPath().getList("content", Spartan.class);
 
-        String name = spartans.get(0).getName();
-        System.out.println("name = " + name);
+        System.out.println("spartans = " + spartans);*/
+
+        List<Spartan> spartans = given().accept(ContentType.JSON)
+                .and().queryParam("nameContains", "a")
+                .and().queryParam("gender", "Male")
+                .when().get("/api/spartans/search")
+                .then().statusCode(200)
+                .extract().jsonPath().getList("content");
+
+        System.out.println("spartans = " + spartans);
+
+        /*String name = spartans.get(0).getName();
+        System.out.println("name = " + name);*/
 
     }
 
