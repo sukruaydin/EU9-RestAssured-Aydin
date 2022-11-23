@@ -12,6 +12,7 @@ public class BookItUtil extends BookItTestBase{
                     .get("/sign")
                     .then().statusCode(200)
                     .extract().response().path("accessToken");
+
             return "Bearer " + token;
       }
 

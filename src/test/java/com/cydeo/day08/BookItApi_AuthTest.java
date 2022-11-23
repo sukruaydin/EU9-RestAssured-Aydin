@@ -14,14 +14,17 @@ import static org.hamcrest.Matchers.*;
 public class BookItApi_AuthTest extends BookItTestBase {
 
         /*
-        created --> BookItUtil then create a method,
-                    that accepts email and password return token Bearer +yourToken as a String
-         */
+            created --> BookItUtil then create a method,
+                        that accepts email and password return token Bearer +yourToken as a String
 
+            2 ways for authorization
+                1 - auth().basic("editor","editor")
+                2 - header("Authorization",token)
+         */
 
     @DisplayName("GET request, with auth")
     @Test
-    public void testAuth1(){
+    public void test1(){
 
         String token = BookItUtil.token("blyst6@si.edu", "barbabaslyst");
         System.out.println("token = " + token);
