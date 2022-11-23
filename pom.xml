@@ -20,8 +20,8 @@
         <version>2.9</version>
         <configuration>
             <systemPropertyVariables>
-                <user.language>eng</user.language>
-                <user.region>ENG</user.region>
+                <user.language>en</user.language>
+                <user.region>EN</user.region>
             </systemPropertyVariables>
         </configuration>
     </plugin>
