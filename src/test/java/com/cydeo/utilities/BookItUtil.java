@@ -9,7 +9,7 @@ public class BookItUtil extends BookItTestBase{
       public static String token(String email, String password){
             String token = given().queryParam("email", email)
                     .queryParam("password", password)
-                    .get("/api/sign")
+                    .get("/sign")
                     .then().statusCode(200)
                     .extract().response().path("accessToken");
             return "Bearer " + token;
