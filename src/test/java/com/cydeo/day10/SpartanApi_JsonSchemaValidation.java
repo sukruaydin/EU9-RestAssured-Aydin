@@ -41,7 +41,7 @@ public class SpartanApi_JsonSchemaValidation extends SpartanAuthTestBase {
 
     }
 
-    @DisplayName("Homework")
+    @DisplayName("Homework, PostJsonSchema")
     @Test
     public void test3(){
 
@@ -52,13 +52,17 @@ public class SpartanApi_JsonSchemaValidation extends SpartanAuthTestBase {
             verify your post response matching with json schema
          */
 
-
         given().accept(ContentType.JSON)
+                .and().contentType(ContentType.JSON)
                 .and().auth().basic("admin","admin")
-                .when().get("/api/spartans")
-                .then().statusCode(200)
-                //what if you have your .json file not under resources following way -->
-                .body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/java/com/cydeo/day10/AllSpartansJsonSchema.json")));
+                .body("{\n" +
+                        "  \"gender\": \"Female\",\n" +
+                        "  \"name\": \"AryaStark\",\n" +
+                        "  \"phone\": 7894561236\n" +
+                        "}")
+                .when().post("/api/spartans")
+                .then().statusCode(201)
+                .and().body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/java/com/cydeo/day10/SpartanPostJsonSchema.json")));
 
     }
 
