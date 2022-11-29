@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.*;
 
 public class SpartanAuthApi_ResponseTimeTest extends SpartanAuthTestBase {
 
-    @DisplayName("ResponseTime verification")
+    @DisplayName("ResponseTime verification, response.getTime() method")
     @Test
     public void test1(){
 
