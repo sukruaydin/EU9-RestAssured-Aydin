@@ -5,6 +5,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
@@ -12,6 +13,7 @@ import static org.hamcrest.Matchers.*;
 
 public class SpartanAuthApi_ResponseTimeTest extends SpartanAuthTestBase {
 
+    @DisplayName("ResponseTime verification")
     @Test
     public void test1(){
 
