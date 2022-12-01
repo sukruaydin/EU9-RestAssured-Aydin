@@ -3,8 +3,6 @@ package com.cydeo.day07;
 import com.cydeo.pojo.Spartan;
 import com.cydeo.utilities.SpartanTestBase;
 import com.cydeo.utilities.SpartanUtils;
-import com.github.javafaker.Faker;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;

@@ -131,4 +131,33 @@ public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
 
     }
 
+    @DisplayName("study-1")
+    @Test
+    public void  test5(){
+
+        List<String> listOfNames = given().accept(ContentType.JSON)
+                .and().queryParam("nameContains", "j")
+                .and().queryParam("gender", "Male")
+                .when().get("/api/spartans/search")
+                .then().statusCode(200)
+                .extract().jsonPath().getList("content.name");
+
+        System.out.println("listOfNames = " + listOfNames);
+
+    }
+
+    @DisplayName("study-2")
+    @Test
+    public void  test6(){
+
+        Spartan spartan = given().accept(ContentType.JSON)
+                .and().queryParam("nameContains", "j")
+                .and().queryParam("gender", "Male")
+                .when().get("/api/spartans/search")
+                .then().statusCode(200)
+                .extract().jsonPath().getObject("content[0]",Spartan.class);
+
+        System.out.println("spartan = " + spartan);
+
+    }
 }

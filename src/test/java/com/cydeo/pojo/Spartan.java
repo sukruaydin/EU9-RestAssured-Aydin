@@ -21,4 +21,6 @@ public class Spartan {
     private String gender;
     private long phone;
 
+
+
 }
