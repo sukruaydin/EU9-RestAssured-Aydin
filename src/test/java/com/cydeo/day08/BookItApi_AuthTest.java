@@ -26,7 +26,7 @@ public class BookItApi_AuthTest extends BookItTestBase {
     @Test
     public void test1(){
 
-        String token = BookItUtil.token("blyst6@si.edu", "barbabaslyst");
+        String token = BookItUtil.generateToken("blyst6@si.edu", "barbabaslyst");
         System.out.println("token = " + token);
 
         //we can provide header by header method

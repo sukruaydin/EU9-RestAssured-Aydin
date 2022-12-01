@@ -4,6 +4,7 @@ import com.cydeo.pojo.Spartan;
 import com.cydeo.utilities.SpartanAuthTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -52,7 +53,7 @@ public class SpartanApi_AuthTest extends SpartanAuthTestBase {
 
     }
 
-    @DisplayName("homework")
+    @DisplayName("homework, admin CRUD ops")
     @Test
     public void test4(){
         /*
@@ -87,15 +88,56 @@ public class SpartanApi_AuthTest extends SpartanAuthTestBase {
                 .when().post("/api/spartans")
                 .then().statusCode(201)
                 .extract().jsonPath().getInt("data.id");
-
+        //for assertion
         String s1 = given().pathParam("id", id)
                 .and().auth().basic("admin", "admin")
                 .when().get("/api/spartans/{id}")
                 .then().statusCode(200)
+                .and().body("name",is("sukruAydin"))
                 .extract().response().asString();
-
         System.out.println("s1 = " + s1);
 
+        //admin PUT request
+        Spartan spartan1 = new Spartan();
+        spartan1.setName("SUKRUAydin");
+        spartan1.setGender("Male");
+        spartan1.setPhone(1234567890l);
+        given().contentType(ContentType.JSON)
+                .and().pathParam("id",id)
+                .and().auth().basic("admin","admin")
+                .and().body(spartan1)
+                .when().put("/api/spartans/{id}")
+                .then().statusCode(204);
+        Spartan s2 = given().contentType(ContentType.JSON)
+                .and().pathParam("id",id)
+                .and().auth().basic("admin","admin")
+                .when().get("/api/spartans/{id}")
+                .then().statusCode(200)
+                .and().body("name",is("SUKRUAydin"))
+                .extract().response().as(Spartan.class);
+        System.out.println("s2 = " + s2);
 
+        //admin PATCH request
+        String body = "{\"phone\":5555555555}";
+        given().contentType(ContentType.JSON)
+                .and().auth().basic("admin","admin")
+                .and().pathParam("id",id)
+                .and().body(body)
+                .when().patch("/api/spartans/{id}")
+                .then().statusCode(204);
+        //assertion
+        Spartan s3 = given().and().auth().basic("admin", "admin")
+                .and().pathParam("id", id)
+                .when().get("/api/spartans/{id}")
+                .then().statusCode(200)
+                .extract().response().as(Spartan.class);
+        System.out.println("s3 = " + s3);
+
+
+        //admin DELETE request
+        given().auth().basic("admin","admin")
+                .and().pathParam("id",id)
+                .when().delete("/api/spartans/{id}")
+                .then().statusCode(204);
     }
 }

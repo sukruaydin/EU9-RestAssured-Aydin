@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.*;
 
 public class BookItUtil extends BookItTestBase{
 
-      public static String token(String email, String password){
+      public static String generateToken(String email, String password){
             String token = given().queryParam("email", email)
                     .queryParam("password", password)
                     .get("/sign")
