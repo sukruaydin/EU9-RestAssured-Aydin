@@ -10,6 +10,8 @@ import static org.hamcrest.Matchers.*;
 
 public class SpartanApi_AuthTest extends SpartanAuthTestBase {
 
+    //BASIC AUTH
+
     @DisplayName("as guest(without authorization), get request, expect 401")
     @Test
     public void test1(){
@@ -32,11 +34,12 @@ public class SpartanApi_AuthTest extends SpartanAuthTestBase {
 
     }
 
-    @DisplayName("as editor, get request, expect 403")
+    @DisplayName("as editor, delete request, expect 403")
     @Test
     public void test3(){
 
         //same problem
+        //editor ca not delete
         given().auth().basic("editor","editor")
                 .pathParam("id",90)
                 .delete("/api/spartans/{id}")
@@ -59,8 +62,6 @@ public class SpartanApi_AuthTest extends SpartanAuthTestBase {
                 User should be able to only READ data, --> not update,delete,create (POST,PUT,PATCH,DELETE) (user,user)
            --------------------------------------------------------
             Can guest even read data ? 401 for all
-
-
      */
 
 
