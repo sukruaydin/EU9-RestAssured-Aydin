@@ -23,18 +23,19 @@ public class SpartanApi_Put_Patch_Delete extends SpartanTestBase {
             you can't only provided the data to be changed
          */
         Map<String,Object> putRequestMap = new LinkedHashMap<>();
-        putRequestMap.put("name","HaticePolatK");
-        putRequestMap.put("gender","Female");
+        putRequestMap.put("name","MustafaKavak");
+        putRequestMap.put("gender","Male");
         putRequestMap.put("phone",1111111111l);
 
         given().contentType(ContentType.JSON)
                 .and().body(putRequestMap)
-                .and().pathParam("id",120)
+                .and().pathParam("id",122)
                 .when().put("/api/spartans/{id}")
                 .then().statusCode(204);
 
+        //sending GET request for assertion
         Spartan spartanUpdated = given().accept(ContentType.JSON)
-                .and().pathParam("id", 120)
+                .and().pathParam("id", 122)
                 .when().get("/api/spartans/{id}")
                 .then().statusCode(200)
                 .extract().response().as(Spartan.class);
@@ -54,16 +55,18 @@ public class SpartanApi_Put_Patch_Delete extends SpartanTestBase {
             it can be multiple data btw
          */
         Map<String,Object> putRequestMap = new LinkedHashMap<>();
-        putRequestMap.put("phone",9999999999l);
+        putRequestMap.put("phone",7777777777l);
 
         given().contentType(ContentType.JSON)
                 .and().body(putRequestMap)
-                .and().pathParam("id",120)
+                .and().pathParam("id",122)
                 .when().patch("/api/spartans/{id}")
                 .then().statusCode(204);
 
+        //sending GET request for assertion
+        //de-serialization with pojo
         Spartan spartanUpdated = given().accept(ContentType.JSON)
-                .and().pathParam("id", 120)
+                .and().pathParam("id", 122)
                 .when().get("/api/spartans/{id}")
                 .then().statusCode(200)
                 .extract().response().as(Spartan.class);
@@ -76,7 +79,7 @@ public class SpartanApi_Put_Patch_Delete extends SpartanTestBase {
     @Test
     public void test3(){
 
-        given().pathParam("id",118)
+        given().pathParam("id",122)
                 .when().delete("/api/spartans/{id}")
                 .then().statusCode(204);
 

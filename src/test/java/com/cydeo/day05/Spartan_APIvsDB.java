@@ -3,9 +3,12 @@ package com.cydeo.day05;
 import com.cydeo.utilities.DBUtils;
 import com.cydeo.utilities.SpartanTestBase;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -13,6 +16,8 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 //java.class_6
 public class Spartan_APIvsDB extends SpartanTestBase {
@@ -59,5 +64,6 @@ public class Spartan_APIvsDB extends SpartanTestBase {
         //connection already closed in @AfterAll method
 
     }
+
 
 }

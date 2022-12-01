@@ -160,6 +160,7 @@ public class SpartanApi_Post extends SpartanTestBase {
         Response response = given().accept(ContentType.JSON)
                 .and().contentType(ContentType.JSON)
                 //auto-serialization by body() method
+                //SpartanUtils.spartanMap() method creates a random spartan
                 .body(SpartanUtils.spartanMap())
                 .when().post("/api/spartans")
                 .then().statusCode(201)
