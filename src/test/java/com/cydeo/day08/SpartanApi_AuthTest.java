@@ -1,6 +1,9 @@
 package com.cydeo.day08;
 
+import com.cydeo.pojo.Spartan;
 import com.cydeo.utilities.SpartanAuthTestBase;
+import io.restassured.http.ContentType;
+import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -64,6 +67,34 @@ public class SpartanApi_AuthTest extends SpartanAuthTestBase {
             Can guest even read data ? 401 for all
      */
 
+        //admin GET request
+        String s = given().contentType(ContentType.JSON)
+                .and().auth().basic("admin", "admin")
+                .pathParam("id",10)
+                .when().get("/api/spartans/{id}")
+                .then().statusCode(200)
+                .extract().response().asString();
+        System.out.println("s = " + s);
+
+        //admin POST request
+        Spartan spartan = new Spartan();
+        spartan.setName("sukruAydin");
+        spartan.setGender("Male");
+        spartan.setPhone(1234567890l);
+        int id = given().contentType(ContentType.JSON)
+                .and().auth().basic("admin", "admin")
+                .body(spartan)
+                .when().post("/api/spartans")
+                .then().statusCode(201)
+                .extract().jsonPath().getInt("data.id");
+
+        String s1 = given().pathParam("id", id)
+                .and().auth().basic("admin", "admin")
+                .when().get("/api/spartans/{id}")
+                .then().statusCode(200)
+                .extract().response().asString();
+
+        System.out.println("s1 = " + s1);
 
 
     }
