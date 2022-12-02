@@ -38,15 +38,15 @@ public class FormulaOneApi_XML {
         String familyName = xmlPath.getString("MRData.DriverTable.Driver.FamilyName");
         System.out.println("familyName = " + familyName);
 
-        //get driverId on the 3rd line
+        //get "driverId attribute" on the 3rd line
         String driverId = xmlPath.getString("MRData.DriverTable.Driver.@driverId");
         System.out.println("driverId = " + driverId);
 
-        //get code on the 3rd line
+        //get "code attribute" on the 3rd line
         String code = xmlPath.getString("MRData.DriverTable.Driver.@code");
         System.out.println("code = " + code);
 
-        //get url on the 3rd line
+        //get "url attribute" on the 3rd line
         String url = xmlPath.getString("MRData.DriverTable.Driver.@url");
         System.out.println("url = " + url);
 
