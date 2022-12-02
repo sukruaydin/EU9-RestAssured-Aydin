@@ -75,4 +75,6 @@ public class SpartanAuthApi_JsonSchemaValidation extends SpartanAuthTestBase {
 
     }
 
+    //SearchSpartan hasn't been practiced yet.
+
 }
