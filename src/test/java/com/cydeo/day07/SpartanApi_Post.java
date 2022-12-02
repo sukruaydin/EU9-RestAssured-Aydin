@@ -159,7 +159,7 @@ public class SpartanApi_Post extends SpartanTestBase {
                 .and().contentType(ContentType.JSON)
                 //auto-serialization by body() method
                 //SpartanUtils.spartanMap() method creates a random spartan
-                .body(SpartanUtils.spartanMap())
+                .body(SpartanUtils.generateSpartan())
                 .when().post("/api/spartans")
                 .then().statusCode(201)
                 .contentType("application/json")

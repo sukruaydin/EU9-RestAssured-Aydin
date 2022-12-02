@@ -9,7 +9,7 @@ public class SpartanUtils {
 
     private static Faker faker;
 
-    public static Map<String,Object> spartanMap(){
+    public static Map<String,Object> generateSpartan(){
         Map<String,Object> map = new LinkedHashMap<>();
 
         faker = new Faker();

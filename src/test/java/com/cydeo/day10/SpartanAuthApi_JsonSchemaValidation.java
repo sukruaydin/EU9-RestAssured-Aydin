@@ -1,6 +1,7 @@
 package com.cydeo.day10;
 
 import com.cydeo.utilities.SpartanAuthTestBase;
+import com.cydeo.utilities.SpartanUtils;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
@@ -13,11 +14,13 @@ import java.io.File;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-public class SpartanApi_JsonSchemaValidation extends SpartanAuthTestBase {
+public class SpartanAuthApi_JsonSchemaValidation extends SpartanAuthTestBase {
 
-    @DisplayName("JsonSchemaValidator class, matchesJsonSchemaInClasspath method")
+    @DisplayName("SingleSpartanJsonSchema, JsonSchemaValidatorClass, matchesJsonSchemaInClasspath() method")
     @Test
     public void test1(){
+
+        //if ".json file" is in resources, we provide the path starting with file name one
 
         given().pathParam("id",10)
                 .and().auth().basic("admin","admin")
@@ -28,9 +31,11 @@ public class SpartanApi_JsonSchemaValidation extends SpartanAuthTestBase {
 
     }
 
-    @DisplayName("JsonSchemaValidator class, matchesJsonSchema method")
+    @DisplayName("AllSpartansJsonSchema, JsonSchemaValidatorClass, matchesJsonSchema() method")
     @Test
     public void test2(){
+
+        //if ".json file" is NOT in resources, we provide full path with different method
 
         given().accept(ContentType.JSON)
                 .and().auth().basic("admin","admin")
@@ -41,7 +46,7 @@ public class SpartanApi_JsonSchemaValidation extends SpartanAuthTestBase {
 
     }
 
-    @DisplayName("Homework, PostJsonSchema")
+    @DisplayName("SpartanPostJsonSchema, JsonSchemaValidatorClass, matchesJsonSchema() method")
     @Test
     public void test3(){
 
@@ -52,19 +57,22 @@ public class SpartanApi_JsonSchemaValidation extends SpartanAuthTestBase {
             verify your post response matching with json schema
          */
 
-        given().accept(ContentType.JSON)
+
+        int id = given().accept(ContentType.JSON)
                 .and().contentType(ContentType.JSON)
-                .and().auth().basic("admin","admin")
-                .body("{\n" +
-                        "  \"gender\": \"Female\",\n" +
-                        "  \"name\": \"AryaStark\",\n" +
-                        "  \"phone\": 7894561236\n" +
-                        "}")
+                .and().auth().basic("admin", "admin")
+                .body(SpartanUtils.generateSpartan())
                 .when().post("/api/spartans")
                 .then().statusCode(201)
-                .and().body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/java/com/cydeo/day10/SpartanPostJsonSchema.json")));
+                .and().body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/java/com/cydeo/day10/SpartanPostJsonSchema.json")))
+                .extract().response().path("data.id");
+
+        //GET request for asserting
+        given().pathParam("id",id)
+                .and().auth().basic("admin","admin")
+                .when().get("/api/spartans/{id}")
+                .then().statusCode(200);
 
     }
-
 
 }
