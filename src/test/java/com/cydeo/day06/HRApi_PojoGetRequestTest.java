@@ -83,6 +83,8 @@ public class HRApi_PojoGetRequestTest extends HRTestBase {
         assertThat(regionIds,is(expectedRegionIds));
         assertThat(regionNames,is(expectedRegionNames));
 
+        int offset = object.getOffset();
+        System.out.println("offset = " + offset);
 
     }
 

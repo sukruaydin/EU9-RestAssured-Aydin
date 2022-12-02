@@ -2,8 +2,8 @@ package com.cydeo.day06;
 
 import com.cydeo.pojo.Search;
 import com.cydeo.pojo.Spartan;
+import com.cydeo.pojo.Spartans;
 import com.cydeo.utilities.SpartanTestBase;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -63,8 +63,8 @@ public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
         // send get request to above endpoint and save first object with type Spartan POJO
 
         JsonPath jsonPath = given().accept(ContentType.JSON)
-                .and().queryParam("nameContains", "a")
-                .and().queryParam("gender", "Male")
+                .and().queryParam("nameContains", "j")
+                .and().queryParam("gender", "Female")
                 .when().get("/api/spartans/search")
                 .then().statusCode(200)
                 .extract().jsonPath();
@@ -160,4 +160,22 @@ public class SpartanApi_PojoGetRequestTest extends SpartanTestBase {
         System.out.println("spartan = " + spartan);
 
     }
+
+    @DisplayName("study-3")
+    @Test
+    public void  test7(){
+
+        Spartans spartans = given().accept(ContentType.JSON)
+                .and().queryParam("nameContains", "j")
+                .and().queryParam("gender", "Male")
+                .when().get("/api/spartans/search")
+                .then().statusCode(200)
+                .extract().response().as(Spartans.class);
+
+        String name = spartans.getListSpartan().get(0).getName();
+        System.out.println("name = " + name);
+
+
+    }
+
 }

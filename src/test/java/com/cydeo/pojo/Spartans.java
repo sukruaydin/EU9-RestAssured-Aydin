@@ -8,15 +8,14 @@ import lombok.ToString;
 
 import java.util.List;
 
-@Getter //coming from lombok
+@Getter
 @Setter
 @ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Spartans {
 
-@JsonIgnoreProperties(ignoreUnknown = true) //coming from jackson
-public class Regions {
+    @JsonProperty("content")
+    private List<Spartan> listSpartan;
 
-    private List<Region> items;
-    private int count;
-    private int offset;
 
 }

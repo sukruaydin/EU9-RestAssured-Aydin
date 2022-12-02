@@ -12,7 +12,8 @@ import lombok.ToString;
 //with this annotation I can ignore id key
 //excluded for serialization, but still included for de-serialization
 //also we can create another class with 3 instances, but it doesn't make sense since we have solution
-@JsonIgnoreProperties(value = "id", allowSetters = true)
+//@JsonIgnoreProperties(value = "id", allowSetters = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Spartan {
 
     //fields for a spartan
