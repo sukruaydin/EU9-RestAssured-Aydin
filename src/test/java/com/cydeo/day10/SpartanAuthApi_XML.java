@@ -15,9 +15,10 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-public class SpartanApi_XML extends SpartanAuthTestBase {
+//java_class_1
+public class SpartanAuthApi_XML extends SpartanAuthTestBase {
 
-    @DisplayName("aa")
+    @DisplayName("accept(ContentType.XML), hamcrest matchers")
     @Test
     public void test1(){
 
@@ -39,7 +40,7 @@ public class SpartanApi_XML extends SpartanAuthTestBase {
 
     }
 
-    @DisplayName("xmlPath")
+    @DisplayName("accept(ContentType.XML), xmlPath() method")
     @Test
     public void test2(){
 
@@ -62,11 +63,9 @@ public class SpartanApi_XML extends SpartanAuthTestBase {
         int id3 = xmlPath.getInt("List.item[2].id");
         List<String> nameList = xmlPath.getList("List.item.name");
 
-
         System.out.println("name1 = " + name1);
         System.out.println("id3 = " + id3);
         System.out.println("nameList = " + nameList);
-
 
     }
 
