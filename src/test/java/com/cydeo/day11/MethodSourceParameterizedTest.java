@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Arrays;
 import java.util.List;
 
+//java_class_5
 public class MethodSourceParameterizedTest {
 
     public static List<String> getNames(){

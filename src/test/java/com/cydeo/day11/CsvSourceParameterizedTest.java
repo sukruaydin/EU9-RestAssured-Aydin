@@ -13,6 +13,7 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+//java_class_3
 public class CsvSourceParameterizedTest {
 
     /*
