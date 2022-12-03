@@ -12,17 +12,18 @@ import static org.hamcrest.Matchers.*;
 //java_class_4
 public class ParameterizedTest_CsvFileSource {
 
-    /*
+    //numLinesToSkip : lines not to be executed, for headers
+    @ParameterizedTest
+    @CsvFileSource(resources = "/postalCode.csv",numLinesToSkip = 1)
+    public void test1(String state, String city, int zipCount){
+        /*
+            Read postalCode.csv from resources
             Write a parameterized test for this request
             Get the data from csv source
             GET https://api.zippopotam.us/us/{state}/{city}
             Verify place number matches with zipCount
-     */
+        */
 
-    //numLinesToSkip : lines not to be executed
-    @ParameterizedTest
-    @CsvFileSource(resources = "/postalCode.csv",numLinesToSkip = 1)
-    public void test1(String state, String city, int zipCount){
         System.out.println("state = " + state);
         System.out.println("city = " + city);
         System.out.println("zipCount = " + zipCount);

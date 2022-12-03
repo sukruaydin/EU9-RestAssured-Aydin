@@ -7,15 +7,19 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 //java_class_5
 public class ParameterizedTest_MethodSource {
 
     public static List<String> getNames(){
-        //you can get value from anywhere almost anytype and return to your test
-        //DB
-        //Excel
-        //other APIs
+        /*
+            you can get value from anywhere almost anytype and return to your test
+            DB
+            Excel
+            other APIs
+         */
+
         List<String> nameList = Arrays.asList("şükrü","oğuz","pişgin","kavak");
         return nameList;
     }
@@ -28,19 +32,30 @@ public class ParameterizedTest_MethodSource {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //I wanna read the exel sheet data in data driven approach
-    public static List<Map<String,String>> getExelData(){
+    //I wanna read the excel-sheet data in data driven approach
+    public static List<Map<String,String>> getExcelData(){
         ExcelUtil vytrackFile = new ExcelUtil("src/test/resources/Vytracktestdata.xlsx","QA3-short");
         return vytrackFile.getDataList();
     }
 
     @ParameterizedTest
-    @MethodSource("getExelData")
+    @MethodSource("getExcelData")
     public void test2(Map<String,String> userInfo){
 
         //print firstName and lastName
         System.out.println(userInfo.get("firstname") + " " + userInfo.get("lastname"));
+    }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static Stream<String> str(){
+        return Stream.of("şükrü");
+    }
+
+    @ParameterizedTest
+    @MethodSource("str")
+    public void test3(String arg){
+        System.out.println("arg = " + arg);
     }
 
 }

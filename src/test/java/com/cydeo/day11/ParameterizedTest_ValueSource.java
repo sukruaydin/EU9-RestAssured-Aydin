@@ -25,14 +25,15 @@ public class ParameterizedTest_ValueSource {
     }
 
 
-    /*
-    SEND GET REQUEST TO https://api.zippopotam.us/us/{zipcode}
-    with these zipcodes 22030,22031, 22032, 22033 , 22034, 22035, 22036
-    check status code 200
-     */
     @ParameterizedTest
     @ValueSource(ints = {22030,22031, 22032, 22033 , 22034, 22035, 22036})
     public void test3(int zipCode){
+         /*
+            SEND GET REQUEST TO https://api.zippopotam.us/us/{zipcode}
+            with these zipcodes 22030,22031, 22032, 22033 , 22034, 22035, 22036
+            check status code 200
+           */
+
         given().pathParam("zipcode",zipCode)
                 .and().baseUri("https://api.zippopotam.us")
                 .when().get("/us/{zipcode}")
