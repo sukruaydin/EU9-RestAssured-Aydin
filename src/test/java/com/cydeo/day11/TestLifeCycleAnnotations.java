@@ -2,6 +2,7 @@ package com.cydeo.day11;
 
 import org.junit.jupiter.api.*;
 
+//java_class_1
 public class TestLifeCycleAnnotations {
 
     //have to be static
