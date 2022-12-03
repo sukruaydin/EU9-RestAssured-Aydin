@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 //java_class_4
-public class CsvFileSourceParameterizedTest {
+public class ParameterizedTest_CsvFileSource {
 
     /*
             Write a parameterized test for this request

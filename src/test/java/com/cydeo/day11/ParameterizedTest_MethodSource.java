@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 //java_class_5
-public class MethodSourceParameterizedTest {
+public class ParameterizedTest_MethodSource {
 
     public static List<String> getNames(){
         //you can get value from anywhere almost anytype and return to your test

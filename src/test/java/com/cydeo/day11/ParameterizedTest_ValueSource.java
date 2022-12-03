@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static io.restassured.RestAssured.*;
 
 //java_class_2
-public class ParameterizedTestInJunit5 {
+public class ParameterizedTest_ValueSource {
 
     //much closer to data driven testing
     @ParameterizedTest

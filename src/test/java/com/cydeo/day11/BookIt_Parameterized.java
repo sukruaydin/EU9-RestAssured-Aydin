@@ -12,7 +12,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 
 //java_class_7
-public class BookItParameterized extends BookItTestBase {
+public class BookIt_Parameterized extends BookItTestBase {
 
     public static List<Map<String,String>> getExcelData(){
         ExcelUtil bookItFile = new ExcelUtil("src/test/resources/BookItQa3.xlsx","QA3");

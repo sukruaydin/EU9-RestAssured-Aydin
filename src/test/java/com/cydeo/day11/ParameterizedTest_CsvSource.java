@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 //java_class_3
-public class CsvSourceParameterizedTest {
+public class ParameterizedTest_CsvSource {
 
     /*
      Test first number + second number = third number

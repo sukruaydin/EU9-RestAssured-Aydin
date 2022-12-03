@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 //java_class_6
-public class ExelUtilPractice {
+public class ExelUtil_Practice {
 
     //let's understand how ExelUtils work
     @Test

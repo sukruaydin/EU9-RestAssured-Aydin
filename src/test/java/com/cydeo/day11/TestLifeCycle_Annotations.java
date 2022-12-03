@@ -3,7 +3,7 @@ package com.cydeo.day11;
 import org.junit.jupiter.api.*;
 
 //java_class_1
-public class TestLifeCycleAnnotations {
+public class TestLifeCycle_Annotations {
 
     //have to be static
     @BeforeAll
