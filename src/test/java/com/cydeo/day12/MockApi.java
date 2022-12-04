@@ -18,4 +18,15 @@ public class MockApi {
 
     }
 
+    @Test
+    public void test2(){
+
+        given().baseUri("https://e787164d-adbd-474e-8c98-6796a1e3af70.mock.pstmn.io")
+                .accept(ContentType.JSON)
+                .when()
+                .get("/employees")
+                .prettyPrint();
+
+    }
+
 }
