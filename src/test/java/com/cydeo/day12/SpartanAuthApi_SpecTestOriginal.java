@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
 
 //java_class_2
-public class SpartansAuthApi_SpecTestOriginal extends SpartanAuthNewTestBase {
+public class SpartanAuthApi_SpecTestOriginal extends SpartanAuthNewTestBase {
     /*
             GET request
 
