@@ -28,13 +28,15 @@ public class BookItTestBase_QA_3 {
 
         responseSpec = expect().statusCode(200)
                         .contentType(ContentType.JSON);
-
-
     }
 
     @AfterAll
     public static void close(){
         reset();
     }
+
+    //public static ResponseSpecification getDynamicResSpec_StatusCode(int status)
+
+
 
 }
