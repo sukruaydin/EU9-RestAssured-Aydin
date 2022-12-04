@@ -25,10 +25,9 @@ public class SpartanAuthApi_ResponseTimeTest extends SpartanAuthTestBase {
                 .time(both(greaterThan(500l)).and(lessThanOrEqualTo(1800l)))
                 .extract().response();
 
-        //Response time
+        //returning the Response time
         long time = response.getTime();
         System.out.println("time = " + time);
-
     }
 
 }
