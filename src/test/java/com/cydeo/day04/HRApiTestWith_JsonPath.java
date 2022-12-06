@@ -54,6 +54,7 @@ public class HRApiTestWith_JsonPath extends HRTestBase {
         }
 
         //SECOND_WAY (METHODIC_WAY)
+        //get all country names where their region_id is 2
         List<String> countriesWith2 = jsonPath.get("items.findAll {it.region_id==2}.country_name");
         //it --> like iterator
         System.out.println("countriesWith2 = " + countriesWith2);
