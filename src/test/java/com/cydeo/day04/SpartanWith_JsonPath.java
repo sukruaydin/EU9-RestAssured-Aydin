@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpartanWith_JasonPath extends SpartanTestBase {
+public class SpartanWith_JsonPath extends SpartanTestBase {
 
     @DisplayName("response.jsonPath() method")
     @Test
