@@ -211,7 +211,7 @@ public class SpartanApi_Post extends SpartanTestBase {
         System.out.println("idFromPost = " + idFromPost);
 
         Spartan spartanPosted = given().pathParam("id", idFromPost)
-                .get("/api/spartans/{id}")
+                .when().get("/api/spartans/{id}")
                 .then().statusCode(200)
                 .extract().response().as(Spartan.class);
 

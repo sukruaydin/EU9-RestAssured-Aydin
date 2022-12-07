@@ -8,7 +8,7 @@ import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
-public class SpartanAuthNewTestBase {
+public abstract class SpartanAuthNewTestBase {
 
     public static RequestSpecification requestSpec;
     public static ResponseSpecification responseSpec;

@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
 //java.class_4
-public class SpartanApiExtractMethod extends SpartanTestBase {
+public class SpartanApi_ExtractMethod extends SpartanTestBase {
 
     @DisplayName("extracting List<String>")
     @Test

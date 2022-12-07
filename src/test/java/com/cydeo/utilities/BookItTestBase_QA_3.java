@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-public class BookItTestBase_QA_3 {
+public abstract class BookItTestBase_QA_3 {
 
     public static RequestSpecification teacherRequestSpec;
     public static RequestSpecification teamLeaderRequestSpec;
