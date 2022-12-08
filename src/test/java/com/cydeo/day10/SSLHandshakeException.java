@@ -18,6 +18,7 @@ public class SSLHandshakeException {
     }
 
     @DisplayName("providing certificate")
+    @Test
     public void test2(){
         given()
                 .keyStore("pathOfTheFile","password")

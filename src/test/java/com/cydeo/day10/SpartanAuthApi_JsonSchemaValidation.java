@@ -2,18 +2,15 @@ package com.cydeo.day10;
 
 import com.cydeo.utilities.SpartanAuthTestBase;
 import com.cydeo.utilities.SpartanUtils;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
-
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
 
+
+//java_class_3
 public class SpartanAuthApi_JsonSchemaValidation extends SpartanAuthTestBase {
 
     @DisplayName("SingleSpartanJsonSchema, JsonSchemaValidatorClass, matchesJsonSchemaInClasspath() method")

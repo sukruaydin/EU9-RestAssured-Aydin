@@ -12,10 +12,10 @@ public class ParameterizedTest_ValueSource {
 
     //much closer to data driven testing
     @ParameterizedTest
-    @ValueSource(ints = {1,3,5,6,7,9,10,5,21,32})
+    @ValueSource(ints = {1,3,5,7,9})
     public void test1(int number){
         System.out.println("number = " + number);
-        Assertions.assertTrue(number>5);
+        Assertions.assertTrue(number>2);
     }
 
     @ParameterizedTest

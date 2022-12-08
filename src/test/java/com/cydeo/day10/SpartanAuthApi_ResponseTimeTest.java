@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+//java_class_4
 public class SpartanAuthApi_ResponseTimeTest extends SpartanAuthTestBase {
 
     @DisplayName("ResponseTime verification, response.getTime() method")

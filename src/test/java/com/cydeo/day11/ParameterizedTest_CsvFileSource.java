@@ -15,7 +15,7 @@ public class ParameterizedTest_CsvFileSource {
     //numLinesToSkip : lines not to be executed, for headers
     @ParameterizedTest
     @CsvFileSource(resources = "/postalCode.csv",numLinesToSkip = 1)
-    public void test1(String state, String city, int zipCount){
+    public void test1(String state, String city, int count){
         /*
             Read postalCode.csv from resources
             Write a parameterized test for this request
@@ -26,14 +26,14 @@ public class ParameterizedTest_CsvFileSource {
 
         System.out.println("state = " + state);
         System.out.println("city = " + city);
-        System.out.println("zipCount = " + zipCount);
+        System.out.println("count = " + count);
 
         given().pathParam("state",state)
                         .and().pathParam("city",city)
                         .and().baseUri("https://api.zippopotam.us")
                         .when().get("/us/{state}/{city}")
                         .then().statusCode(200)
-                        .and().body("places",hasSize(zipCount));
+                        .and().body("places",hasSize(count));
 
         System.out.println("----------------------");
 
