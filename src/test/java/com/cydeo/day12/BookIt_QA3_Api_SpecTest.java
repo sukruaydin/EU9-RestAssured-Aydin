@@ -31,6 +31,7 @@ public class BookIt_QA3_Api_SpecTest extends BookItTestBase_QA_3 {
                 .when().get("/api/users/me")
                 .then().spec(getDynamicResSpec_StatusCode(200));
 
+
     }
 
 }

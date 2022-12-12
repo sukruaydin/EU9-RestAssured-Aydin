@@ -37,7 +37,6 @@ public abstract class BookItTestBase_QA_3 {
         reset();
     }
 
-
     public static ResponseSpecification getDynamicResSpec_StatusCode(int statusCode){
         return expect().statusCode(statusCode)
                 .and().contentType(ContentType.JSON);
@@ -52,7 +51,6 @@ public abstract class BookItTestBase_QA_3 {
                 .body("lastName",is(lastName))
                 .logDetail(LogDetail.ALL);
     }
-
 
     //teacher,student-member,student-leader
     public static RequestSpecification userReqSpec(String email, String password){
