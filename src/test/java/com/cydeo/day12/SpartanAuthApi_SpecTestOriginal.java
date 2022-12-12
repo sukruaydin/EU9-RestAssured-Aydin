@@ -2,13 +2,18 @@ package com.cydeo.day12;
 
 import com.cydeo.utilities.SpartanAuthNewTestBase;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 
 //java_class_2
 public class SpartanAuthApi_SpecTestOriginal extends SpartanAuthNewTestBase {
-    /*
+
+    @DisplayName("getting all spartans")
+    @Test
+    public void test1(){
+        /*
             GET request
 
             all tests in this class will use admin credentials
@@ -18,9 +23,6 @@ public class SpartanAuthApi_SpecTestOriginal extends SpartanAuthNewTestBase {
             all test in this class response content type header is json
      */
 
-    @Test
-    public void test1(){
-
         given().accept(ContentType.JSON)
                 .and().auth().basic("admin","admin")
                 .when().get("/spartans")
@@ -28,6 +30,8 @@ public class SpartanAuthApi_SpecTestOriginal extends SpartanAuthNewTestBase {
                 .and().contentType(ContentType.JSON);
 
     }
+
+    @DisplayName("getting one spartan")
     @Test
     public void test2(){
 
