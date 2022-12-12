@@ -4,14 +4,16 @@ import com.cydeo.utilities.SpartanAuthNewTestBase;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.is;
 
 //java_class_1
-public class OldRestAssuredTest extends SpartanAuthNewTestBase {
+public class SpartanAuthApi_Previously extends SpartanAuthNewTestBase {
 
+    @DisplayName("previously")
     @Test
     public void test1(){
         given().accept(ContentType.JSON)
@@ -26,6 +28,7 @@ public class OldRestAssuredTest extends SpartanAuthNewTestBase {
 
     }
 
+    @DisplayName("acquiring Response Specification with expect()")
     @Test
     public void test2(){
 
